@@ -1,0 +1,10 @@
+<!-- Filename: /module/Mspotter/view/Mspotter/list/index.phtml -->
+<h1>Mspotter</h1>
+<?php foreach ($this->ads as $ad): ?>
+    <article>
+        <h1 id="ad<?= $ad->getId() ?>"><?= $ad->getTitle() ?></h1>
+        <p>
+            <?= $ad->getText() ?>
+        </p>
+    </article>
+<?php endforeach ?>

@@ -1,0 +1,11 @@
+<!-- Filename: /module/Mspotter/view/Mspotter/delete/delete.phtml -->
+<h1>DeleteController::deleteAction()</h1>
+<p>
+    Are you sure that you want to delete
+    '<?php echo $this->escapeHtml($this->ad->getTitle()); ?>' by
+    '<?php echo $this->escapeHtml($this->ad->getText()); ?>'?
+</p>
+<form action="<?php echo $this->url('Mspotter/delete', array(), true) ?>" method="ad">
+    <input type="submit" name="delete_confirmation" value="yes">
+    <input type="submit" name="delete_confirmation" value="no">
+</form>

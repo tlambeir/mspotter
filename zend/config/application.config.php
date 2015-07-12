@@ -10,7 +10,8 @@ return array(
     'modules' => array(
         'Application',
         'Album',
-        'Blog'
+        'Blog',
+        'Mspotter'
     ),
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(
