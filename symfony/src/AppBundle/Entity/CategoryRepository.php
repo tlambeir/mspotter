@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+    public function findRootCategories(){
+        $query = $this->createQueryBuilder('Category')
+            ->where('Category.parent is NULL')
+            ->orderBy('Category.id', 'ASC')
+            ->getQuery();
+        return $query->getResult();
+    }
 }

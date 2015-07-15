@@ -1,15 +1,15 @@
 <?php
-// src/AppBundle/Entity/Product.php
+// src/AppBundle/Entity/Ad.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Entity\ProductRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\AdRepository")
  * @ORM\HasLifecycleCallbacks()
- * @ORM\Table(name="product")
+ * @ORM\Table(name="ads")
  */
-class Product
+class Ad
 {
     /**
      * @ORM\Column(type="integer")
@@ -34,7 +34,7 @@ class Product
     protected $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="ads")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
@@ -58,7 +58,7 @@ class Product
      * Set name
      *
      * @param string $name
-     * @return Product
+     * @return Ad
      */
     public function setName($name)
     {
@@ -81,7 +81,7 @@ class Product
      * Set price
      *
      * @param string $price
-     * @return Product
+     * @return Ad
      */
     public function setPrice($price)
     {
@@ -104,7 +104,7 @@ class Product
      * Set description
      *
      * @param string $description
-     * @return Product
+     * @return Ad
      */
     public function setDescription($description)
     {
@@ -127,7 +127,7 @@ class Product
      * Set category
      *
      * @param \AppBundle\Entity\Category $category
-     * @return Product
+     * @return Ad
      */
     public function setCategory(\AppBundle\Entity\Category $category = null)
     {
@@ -150,7 +150,7 @@ class Product
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Product
+     * @return Ad
      */
     public function setCreatedAt($createdAt)
     {

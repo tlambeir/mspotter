@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Entity\CategoryRepository")
- * @ORM\Table(name="category")
+ * @ORM\Table(name="mspotter_categories")
  */
 class Category
 {
@@ -18,18 +18,34 @@ class Category
     protected $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent", referencedColumnName="id")
+     */
+    protected $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     */
+    protected $children;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\Column(type="text", length=100)
      */
-    protected $products;
+    protected $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ad", mappedBy="category")
+     */
+    protected $ads;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->ads = new ArrayCollection();
     }
 
     /**
@@ -66,35 +82,114 @@ class Category
     }
 
     /**
-     * Add products
+     * Add ads
      *
-     * @param \AppBundle\Entity\Product $products
+     * @param \AppBundle\Entity\Ad $ads
      * @return Category
      */
-    public function addProduct(\AppBundle\Entity\Product $products)
+    public function addAd(\AppBundle\Entity\Ad $ads)
     {
-        $this->products[] = $products;
+        $this->ads[] = $ads;
 
         return $this;
     }
 
     /**
-     * Remove products
+     * Remove ads
      *
-     * @param \AppBundle\Entity\Product $products
+     * @param \AppBundle\Entity\Ad $ads
      */
-    public function removeProduct(\AppBundle\Entity\Product $products)
+    public function removeAd(\AppBundle\Entity\Ad $ads)
     {
-        $this->products->removeElement($products);
+        $this->ads->removeElement($ads);
     }
 
     /**
-     * Get products
+     * Get ads
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProducts()
+    public function getAds()
     {
-        return $this->products;
+        return $this->ads;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \AppBundle\Entity\Category $parent
+     * @return Category
+     */
+    public function setParent(\AppBundle\Entity\Category $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \AppBundle\Entity\Category 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Category
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \AppBundle\Entity\Category $children
+     * @return Category
+     */
+    public function addChild(\AppBundle\Entity\Category $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \AppBundle\Entity\Category $children
+     */
+    public function removeChild(\AppBundle\Entity\Category $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 }

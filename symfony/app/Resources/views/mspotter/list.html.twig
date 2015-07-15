@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Muzikant Gezocht mSpotter{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Muzikanten gezocht / aangeboden</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <a href="#">{{ category.name }}</a>
+                        <ul>
+                            {% for childCategory in category.children %}
+                                <li>
+                                    <a href="#">{{ childCategory.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>
+                MSpotter: Muzikanten gezocht
+            </h2>
+            <p>
+                <strong>
+                    mSpotter is gewijd aan het helpen van muzikanten vinden voor andere muzikanten of het nu voor een occasionele jam, om een ??band op te richten of een line-up te voltooien is.
+                </strong>
+            </p>
+            <p>
+            Het maakt niet uit of je een band zoekt, op zoek bent naar een gitarist of een zanger. mSpotter heeft het allemaal!
+            </p>
+            <p>
+            De drummer, gitarist, zanger of bassist die die je zoekt, is op dit moment misschien hier op zoek naar jou!
+            </p>
+            <p>
+            Muzikanten zoeken kan niet eenvoudiger. Het duurt minder dan een minuut om uw advertentie te maken en dan kun je via de muzikanten advertenties zoeken naar precies de muzikanten in uw omgeving om uw muzikale dromen waar te maken! Met meer en meer muzikanten die elke dag registreren weet je zeker dat de muzikanten die je zoekt in een mum van tijd zullen gevonden worden.
+            </p>
+            <p>
+            mSpotter heeft 2 hoofdsecties: Muzikant gezocht en Muzikant aangeboden. In deze rubrieken wordt nog eens een onderscheid gemaakt tussen verschillende types van muzikanten: gitarist, drummer, bassist, keyboard, etc.
+            </p>
+            <p>
+            Via plaats advertentie kan je een zoekertje aanmaken. Hier kan je gratis een advertentie maken. Bij het maken van de advertentie stel je in of een op zoek bent naar een bepaalde type van muzikant via "muzikant gezocht" of promoot je jezelf als muzikant via "muzikant aangeboden". Vergeet niet dat je aan je advertentie meerdere categorieën kunt toewijzen.
+            </p>
+            <p>
+            Partnerships en sponsoring
+            </p>
+            <p>
+            mSpotter is op zoek naar partnerships en sponsoring voor startende muziekprojecten (zoals "battle of the bands" of "rock rallies") Indien interesse laat on iets weten via info@mspotter.be
+            </p>
+        </div>
+    </div>
+{% endblock %}
