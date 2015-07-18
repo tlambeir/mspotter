@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/pinanoselect2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('bundles/pinanoselect2/js/i18n/en.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var data = {{ choices|json_encode()| raw}};
+            $(".select2").select2({
+                placeholder: "Selecteer categorie",
+                data: data,
+            })
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/pinanoselect2/css/select2.css') }}" rel="stylesheet" />
+{% endblock %}

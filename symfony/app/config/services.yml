@@ -7,3 +7,15 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.form.type.ad:
+        class: AppBundle\Form\Type\AdType
+        arguments: [ "@doctrine.orm.entity_manager" ]
+        tags:
+            - { name: form.type, alias: ad }
+    app.form.type.select2:
+            class: AppBundle\Form\Type\Select2Type
+            arguments:
+                    - @twig
+                    - @event_dispatcher
+            tags:
+                - { name: form.type, alias: select2 }

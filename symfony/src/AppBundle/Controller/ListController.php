@@ -8,7 +8,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Ad;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class ListController extends Controller
 {
     /**
      * @Route("/mspotter", name="homepage")
@@ -20,7 +20,7 @@ class DefaultController extends Controller
         $categories = $repository->findRootCategories();
 
         return $this->render(
-            'mspotter/list.html.twig',
+            'AppBundle:mspotter:list.html.twig',
             array('categories' => $categories)
         );
     }
@@ -85,7 +85,7 @@ class DefaultController extends Controller
         }
 
         return $this->render(
-            'mspotter/detail.html.twig',
+            'AppBundle:mspotter:detail.html.twig',
             array('name' => $ad->getName())
         );
     }
