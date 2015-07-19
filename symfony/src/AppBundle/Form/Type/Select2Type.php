@@ -19,7 +19,9 @@ class Select2Type extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'choices' => array()
+            'choices' => array(),
+            'data_class' => null,
+            'compound' => false,
         ));
     }
 

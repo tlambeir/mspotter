@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+use AppBundle\Form\DataTransformer\CategoryTransformer;
 
 class AdType extends AbstractType
 {
@@ -18,14 +20,21 @@ class AdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $repository = $this->em->getRepository('AppBundle:Category');
-        $categories = $repository->findRootCategories();
+        //$categories = $repository->findRootCategories();
+        $categories = $repository->findAll();
 
         $builder
             ->add('name', 'text')
-            ->add('category', 'text')
             ->add('category', 'select2', array(
+                'data_class' => 'AppBundle\Entity\Category',
                 'choices' => $categories,
             ))
+            /*
+            ->add('category', 'entity', array(
+                'class' => 'AppBundle:Category',
+                'property' => 'name',
+                'choices' => $repository->findAll()
+            ))*/
             ->add('description', 'textarea')
             ->add('genres', 'text')
             ->add('influences', 'text')
@@ -37,6 +46,9 @@ class AdType extends AbstractType
             ->add('country', 'text')
             ->add('save', 'submit', array('label' => 'Plaats advertentie'))
         ;
+
+        $builder->get('category')
+            ->addModelTransformer(new CategoryTransformer($this->em));
     }
 
     public function getName()
