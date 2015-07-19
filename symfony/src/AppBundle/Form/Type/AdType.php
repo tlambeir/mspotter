@@ -24,26 +24,20 @@ class AdType extends AbstractType
         $categories = $repository->findAll();
 
         $builder
-            ->add('name', 'text')
+            ->add('name', 'text',array('label' => 'Onderwerp'))
             ->add('category', 'select2', array(
                 'data_class' => 'AppBundle\Entity\Category',
                 'choices' => $categories,
             ))
-            /*
-            ->add('category', 'entity', array(
-                'class' => 'AppBundle:Category',
-                'property' => 'name',
-                'choices' => $repository->findAll()
-            ))*/
-            ->add('description', 'textarea')
-            ->add('genres', 'text')
-            ->add('influences', 'text')
-            ->add('website', 'url')
-            ->add('facebook', 'url')
-            ->add('twitter', 'url')
-            ->add('soundCloud', 'url')
-            ->add('city', 'text')
-            ->add('country', 'text')
+            ->add('description', 'textarea',array('label' => 'Omschrijving'))
+            ->add('genres', 'text',array('required' => false))
+            ->add('influences', 'text',array('label' => 'Invloeden','required' => false))
+            ->add('website', 'url',array('required' => false))
+            ->add('facebook', 'url',array('required' => false))
+            ->add('twitter', 'url',array('required' => false))
+            ->add('soundCloud', 'url',array('required' => false))
+            ->add('city', 'text',array('label' => 'Gemeente'))
+            ->add('country', 'text',array('label' => 'Land'))
             ->add('save', 'submit', array('label' => 'Plaats advertentie'))
         ;
 

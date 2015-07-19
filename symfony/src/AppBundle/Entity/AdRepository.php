@@ -20,4 +20,13 @@ class AdRepository extends EntityRepository
             )
             ->getResult();
     }
+
+    public function findAllFrontPage()
+    {
+        $query = $this->createQueryBuilder('Ad')
+            ->orderBy('Ad.id', 'DESC')
+            ->getQuery()
+            ->setMaxResults(16);
+        return $query->getResult();
+    }
 }

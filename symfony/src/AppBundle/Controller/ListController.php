@@ -11,17 +11,23 @@ use Symfony\Component\HttpFoundation\Response;
 class ListController extends Controller
 {
     /**
-     * @Route("/mspotter", name="homepage")
+     * @Route("/mspotter", name="mspotter")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('AppBundle:Category');
-        $categories = $repository->findRootCategories();
+        $categoryRepository = $em->getRepository('AppBundle:Category');
+        $categories = $categoryRepository->findRootCategories();
+
+        $adRepository = $em->getRepository('AppBundle:Ad');
+        $ads = $adRepository->findAllFrontPage();
 
         return $this->render(
             'AppBundle:mspotter:list.html.twig',
-            array('categories' => $categories)
+            array(
+                'categories' => $categories,
+                'ads' => $ads
+            )
         );
     }
 

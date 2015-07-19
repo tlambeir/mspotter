@@ -4,28 +4,35 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-xs-12">
-            <h1>Muzikanten gezocht / aangeboden</h1>
+        <div class="col-xs-12 text-center">
+            <h2>MSpotter: Muzikant Gezocht! Muzikanten databank voor en door muzikanten.</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">
+                <a class="btn btn-primary btn-lg" href="{{ path('place_ad') }}">Muzikant aangeboden!</a>
+        </div>
+        <div class="col-md-4 text-center">
+                <a class="btn btn-primary btn-lg" href="{{ path('place_ad') }}">Muzikant gezocht!</a>
+        </div>
+        <div class="col-md-4 text-center">
+                <a class="btn btn-primary btn-lg" href="{{ path('place_ad') }}">Plaats advertentie!</a>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <ul>
-                {% for category in categories %}
-                    <li>
-                        <a href="#">{{ category.name }}</a>
-                        <ul>
-                            {% for childCategory in category.children %}
-                                <li>
-                                    <a href="#">{{ childCategory.name }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endfor %}
-            </ul>
+            <h1>Muzikanten gezocht / aangeboden</h1>
         </div>
     </div>
+    <ul class="row gallery">
+        {% for ad in ads %}
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                <div class="ad_name">
+                    <a href="#">{{ ad.name }}</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
     <hr>
     <div class="row">
         <div class="col-xs-12">
@@ -58,6 +65,25 @@
             <p>
             mSpotter is op zoek naar partnerships en sponsoring voor startende muziekprojecten (zoals "battle of the bands" of "rock rallies") Indien interesse laat on iets weten via info@mspotter.be
             </p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <a href="#">{{ category.name }}</a>
+                        <ul>
+                            {% for childCategory in category.children %}
+                                <li>
+                                    <a href="#">{{ childCategory.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

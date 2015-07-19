@@ -18,3 +18,18 @@ body {
 .footer .container p{
     margin: 20px 0;
 }
+
+ul.gallery {
+    padding:0 0 0 0;
+    margin:0 0 0 0;
+}
+ul.gallery li {
+    list-style:none;
+    margin-bottom:25px;
+}
+ul.gallery li .ad_name{
+    height: 50px;
+}
+ul.gallery li img {
+    cursor: pointer;
+}
