@@ -2,6 +2,7 @@
 
 {% block title %}Muzikant Gezocht mSpotter{% endblock %}
 
+
 {% block body %}
     <div class="row">
         <div class="col-xs-12 text-center">
@@ -26,9 +27,17 @@
     </div>
     <ul class="row gallery">
         {% for ad in ads %}
-            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                <div class="ad_name">
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+                <div>
+                <a href="#">
+                    <img class="category-img" src="{{ asset("bundles/mspotter/images/nopic") ~ ad.category.id  }}.gif" alt="{{ ad.name }}" />
+                </a>
+                </div>
+                <div class="ad_name text-center text-capitalize">
                     <a href="#">{{ ad.name }}</a>
+                </div>
+                <div class="ad_category_name text-center">
+                    {{ ad.category.name }}
                 </div>
             </li>
         {% endfor %}
@@ -41,7 +50,7 @@
             </h2>
             <p>
                 <strong>
-                    mSpotter is gewijd aan het helpen van muzikanten vinden voor andere muzikanten of het nu voor een occasionele jam, om een ??band op te richten of een line-up te voltooien is.
+                    mSpotter is gewijd aan het helpen van muzikanten vinden voor andere muzikanten of het nu voor een occasionele jam, om een band op te richten of een line-up te voltooien is.
                 </strong>
             </p>
             <p>
@@ -70,7 +79,7 @@
     <hr>
     <div class="row">
         <div class="col-xs-12">
-            <ul>
+            <ul class="list-inline category-links">
                 {% for category in categories %}
                     <li>
                         <a href="#">{{ category.name }}</a>

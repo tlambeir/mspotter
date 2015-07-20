@@ -29,7 +29,25 @@ ul.gallery li {
 }
 ul.gallery li .ad_name{
     height: 50px;
+    padding: 0 6px;
+}
+ul.gallery li .ad_name a{
+
 }
 ul.gallery li img {
     cursor: pointer;
+}
+.category-links > li{
+    float:left;
+}
+a {
+    color: #e67100;
+    text-decoration: none;
+}
+.category-img{
+    box-shadow: 0 2px 4px #808080;
+    background: none repeat scroll 0 0 #FFF;
+    margin: 0 0 5px;
+    padding: 5px;
+    border: 1px solid #B0B0B0;
 }

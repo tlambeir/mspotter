@@ -26,7 +26,7 @@ class AdRepository extends EntityRepository
         $query = $this->createQueryBuilder('Ad')
             ->orderBy('Ad.id', 'DESC')
             ->getQuery()
-            ->setMaxResults(16);
+            ->setMaxResults(18);
         return $query->getResult();
     }
 }
