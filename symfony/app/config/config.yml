@@ -37,6 +37,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
             - 'AppBundle:Form:fields.html.twig'
+            - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -80,3 +81,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+vich_uploader:
+    db_driver: orm
+    mappings:
+            ad_image:
+                uri_prefix: /images/ads
+                upload_destination: %kernel.root_dir%/../web/images/ads

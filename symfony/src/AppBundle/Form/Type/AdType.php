@@ -38,6 +38,12 @@ class AdType extends AbstractType
             ->add('soundCloud', 'url',array('required' => false))
             ->add('city', 'text',array('label' => 'Gemeente'))
             ->add('country', 'text',array('label' => 'Land'))
+            ->add('image', 'vich_image', array(
+                'label' => 'Afbeelding',
+                'required'      => false,
+                'allow_delete'  => true, // not mandatory, default is true
+                'download_link' => true, // not mandatory, default is true
+            ))
             ->add('save', 'submit', array('label' => 'Plaats advertentie'))
         ;
 
